@@ -89,9 +89,9 @@ public class Csv2Json {
         List<String[]> csvFileContent = new LinkedList<>();
 
         try {
-            FileReader filereader = new FileReader(path);
             CSVParser parser = new CSVParserBuilder().withSeparator(CSV_SEPARATOR).build();
-            try (CSVReader csvReader = new CSVReaderBuilder(filereader)
+            try (CSVReader csvReader = new CSVReaderBuilder(
+                    new FileReader(path))
                     .withCSVParser(parser)
                     .build()) {
                 csvFileContent = csvReader.readAll();
